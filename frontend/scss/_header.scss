@@ -1,0 +1,18 @@
+nav{
+    .container{
+        .navbar-nav{
+            .nav-item{
+                height: 40px;
+                width:40px;
+
+                button{
+                    display: grid;
+                    place-items: center;
+                    i{
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
