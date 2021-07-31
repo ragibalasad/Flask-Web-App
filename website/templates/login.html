@@ -1,54 +1,151 @@
 {% extends 'base.html' %}
 {% block title %} Login or signup {% endblock %}
 {% block content %}
-<div class="navbar">
-    <div class="left">
-        <h3>Flask web app login</h3>
-    </div>
-    <div class="right">
-        <form action="/login" method="POST">
-            <input type="text" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="submit" value="Login">
-        </form>
-    </div>
-</div>
-<div class="discolor"></div><br>
-<div class="main">
-    <div class="logo"><p style="margin-left: 10%;">[!location for logo] <br> <small>[!Error 404: logo not found]</small></p>
-        <h3>Don't be afraid of the look. <br> <br> We didn't have enough money to spend a lot on the frontend.</h3>
-        <br>
+<div class="container-fluid vh-100 p-0">
+    <div class="row h-100 m-0">
+        <aside class="col-6 bg-primary d-none d-xl-block p-0">
+            <div class="row justify-content-center align-items-center h-100">
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    {% if category == 'error' %}
-                        <span style="color:red; margin-left:20px">
-                            {{ message }}
-                        </span>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-
-    </div>
-    <div class="signup">
-        <form action="/signup" method="POST">
-            <h3>Signup for a new account</h3><br>
-            <label for="full_name">Fullname</label>
-            <input type="text" name="full_name" id="full_name" placeholder="Fullname"><br>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" placeholder="Email"><br>
-            <label for="pass1">New Password</label>
-            <input type="password" name="password1" id="pass1" placeholder="New Password"><br>
-            <label for="pass2">Confirm Password</label>
-            <input type="password" name="password2" id="pass2" placeholder="Confirm Password"><br>
-            
-            <div class="txt">
-                <small>By clicking 'Signup' you agree to our <a href="">Terms & Conditions</a></small>
+                <div id="carouselExampleIndicators" class="col carousel slide p-0" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ url_for('static', filename='images/1.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='images/2.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='images/3.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
-            <input type="submit" value="Signup">
-        </form>
+        </aside>
+        <main class="container col-xl-6">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col col-md-8">
+                    <div class="row">
+                        <main class="card border-0 shadow p-2 py-4 p-md-4">
+                            <header class="card-header mb-4 bg-white">
+                                <div class="d-flex justify-content-around align-items-center">
+                                    <a href="#login" class="slider-btn" id="active-login">LOGIN</a>
+                                    <a href="#signup" class="slider-btn text-secondary"
+                                        id="active-signup">SIGNUP</a>
+                                </div>
+                            </header>
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                    {% for category, message in messages %}
+                                        {% if category == 'error' %}
+                                            <span style="color:red; margin-left:20px">
+                                                {{ message }}
+                                            </span>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+
+
+                            <form action="" method="post" class="d-block w-100" id="loginForm">
+                                <main class="form-main">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                placeholder="name@example.com" required>
+                                            <label for="email">Email address</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" name="password" id="floatingPassword"
+                                                placeholder="Password" required>
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                        <a href="#" class="d-block">Forgot password?</a>
+                                    </div>
+                                </main>
+                                <footer class="form-footer">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary rounded-pill" type="submit">LOGIN</button>
+                                    </div>
+                                </footer>
+                            </form>
+
+
+                            <form action="" method="post" class="d-block w-100 d-none" id="signupForm">
+                                <main class="form-main">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="full_name" id="name"
+                                                placeholder="Raiyan Takrim" required>
+                                            <label for="name">Full Name</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" name="email" id="Email" placeholder="Email"
+                                                required>
+                                            <label for="Email">E-Mail</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" name="pass1" id="password"
+                                                placeholder="Password" required>
+                                            <label for="password">Password</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" name="pass2" id="confirmPassword"
+                                                placeholder="Confirm Password" required>
+                                            <label for="confirmPassword">Confirm Password</label>
+                                        </div>
+                                        <small class="error-msz text-danger">error message</small>
+                                    </div>
+                                </main>
+                                <footer class="form-footer">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary rounded-pill" type="submit">SIGNUP</button>
+                                    </div>
+                                </footer>
+                            </form>
+
+
+
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="{{ url_for('static', filename='js/slider.js')}}"></script>
 {% endblock %}
