@@ -64,7 +64,7 @@
                             {% endwith %}
 
 
-                            <form action="" method="post" class="d-block w-100" id="loginForm">
+                            <form action="/login" method="post" class="d-block w-100" id="loginForm">
                                 <main class="form-main">
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -92,7 +92,7 @@
                             </form>
 
 
-                            <form action="" method="post" class="d-block w-100 d-none" id="signupForm">
+                            <form action="/signup" method="post" class="d-block w-100 d-none" id="signupForm">
                                 <main class="form-main">
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="password" class="form-control" name="pass1" id="password"
+                                            <input type="password" class="form-control" name="password1" id="password"
                                                 placeholder="Password" required>
                                             <label for="password">Password</label>
                                         </div>
@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="password" class="form-control" name="pass2" id="confirmPassword"
+                                            <input type="password" class="form-control" name="password2" id="confirmPassword"
                                                 placeholder="Confirm Password" required>
                                             <label for="confirmPassword">Confirm Password</label>
                                         </div>
