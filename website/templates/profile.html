@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} 404 Error {% endblock %}
+
+{% block content %}
+
+<main class="container-sm py-5 bg-light">
+    <div class="row">
+        <div class="col-4 user-pic">
+            <div class="row d-sm-flex align-items-sm-center justify-content-sm-center">
+                <img class="col-sm img-fluid rounded-circle" src="{{ url_for('static', filename='images/shuvo.jpg') }}" alt="Profile Picture">
+            </div>
+        </div>
+        <div class="col-8 d-flex flex-column justify-content-center">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-start align-items-sm-end mb-2">
+                <h1 class="display-6 d-inline-block me-sm-5 m-0">{{ user.full_name }}</h1>
+                <button class="btn btn-outline-secondary btn-sm d-block mt-4 m-sm-0">Edit Profile</button>
+                <!-- active in viewer mood -->
+                <button class="btn btn-primary d-none">Edit Profile</button>
+            </div>
+            <div class="d-flex justify-content-between justify-content-sm-start mb-sm-2 mt-sm-2 mt-2">
+                <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center me-sm-4">
+                    <span class="fw-bold me-2">100</span>
+                    <p class="m-0"> posts</p>
+                </div>
+                <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center me-sm-4">
+                    <span class="fw-bold me-2">10k</span>
+                    <p class="m-0"> followers</p>
+                </div>
+                <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center me-sm-4">
+                    <span class="fw-bold me-2">1k</span>
+                    <p class="m-0"> following</p>
+                </div>
+                
+            </div>
+            <div class="row d-none d-sm-block">
+                <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, nobis. Hic repudiandae quisquam laudantium. Nostrum velit sit commodi provident ratione animi aliquid, iste rerum est voluptates, ipsam deserunt blanditiis iusto?</p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+    {% endblock %}

@@ -73,8 +73,7 @@
                                 {% endif %}
                             {% endwith %}
 
-
-                            <form action="/login" method="post" class="d-block w-100" id="loginForm">
+                            <form action="/login" method="post" class="{% if signup_tab %} d-none {% else %} d-block {% endif %} w-100" id="loginForm">
                                 <main class="form-main">
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -82,7 +81,7 @@
                                                 placeholder="name@example.com" required>
                                             <label for="email">Email address</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
+                                        <small class="error-msz text-danger d-none">error message</small>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -90,8 +89,8 @@
                                                 placeholder="Password" required>
                                             <label for="floatingPassword">Password</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
-                                        <a href="#" class="d-block">Forgot password?</a>
+                                        <small class="error-msz text-danger d-none">error message</small>
+                                        <br><a href="#" class="d-block">Forgot password?</a>
                                     </div>
                                 </main>
                                 <footer class="form-footer">
@@ -102,7 +101,7 @@
                             </form>
 
 
-                            <form action="/signup" method="post" class="d-block w-100 d-none" id="signupForm">
+                            <form action="/signup" method="post" class="{% if signup_tab %} d-block {% else %} d-none {% endif %} w-100" id="signupForm">
                                 <main class="form-main">
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -110,7 +109,7 @@
                                                 placeholder="Raiyan Takrim" required>
                                             <label for="name">Full Name</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
+                                        <small class="error-msz text-danger d-none">error message</small>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -118,7 +117,7 @@
                                                 required>
                                             <label for="Email">E-Mail</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
+                                        <small class="error-msz text-danger d-none">error message</small>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -126,7 +125,7 @@
                                                 placeholder="Password" required>
                                             <label for="password">Password</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
+                                        <small class="error-msz text-danger d-none">error message</small>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-floating">
@@ -134,7 +133,7 @@
                                                 placeholder="Confirm Password" required>
                                             <label for="confirmPassword">Confirm Password</label>
                                         </div>
-                                        <small class="error-msz text-danger">error message</small>
+                                        <small class="error-msz text-danger d-none">error message</small>
                                     </div>
                                 </main>
                                 <footer class="form-footer">
