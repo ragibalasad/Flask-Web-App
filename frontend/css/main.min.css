@@ -1,1 +1,12 @@
-nav .container .navbar-nav .nav-item{height:40px;width:40px}nav .container .navbar-nav .nav-item button{display:-ms-grid;display:grid;place-items:center}nav .container .navbar-nav .nav-item button i{font-size:18px}
+nav .container .navbar-nav .nav-item {
+  height: 40px;
+  width: 40px;
+}
+nav .container .navbar-nav .nav-item button {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+nav .container .navbar-nav .nav-item button i {
+  font-size: 18px;
+}
