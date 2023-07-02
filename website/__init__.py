@@ -29,7 +29,9 @@ def create_app():
     # Initialize Database
     from .models import User, Post
 
-    create_database(app)
+    # Create database if does not exist already
+    with app.app_context():
+        db.create_all()
 
     # Initialize login manager
     login_manager = LoginManager()
@@ -41,10 +43,3 @@ def create_app():
         return User.query.get(int(id))
 
     return app
-
-
-# Creates database.db file in path if doesn't exist
-def create_database(app):
-    if not path.exists("database/" + DB_NAME):
-        db.create_all(app=app)
-        print("Database Doesn't exist. New database created!")
