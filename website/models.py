@@ -1,5 +1,5 @@
-from . import db
 from flask_login import UserMixin
+from . import db
 
 
 # A database table that contains user informations

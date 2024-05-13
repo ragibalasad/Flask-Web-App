@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from dotenv import load_dotenv
-from os import path, getenv
+from os import getenv
 
 load_dotenv(override=True)
 DB_URI = getenv("DB_URI")
