@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -9,17 +9,12 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST" or session.get("request_login"):
+    if current_user.is_authenticated:
+        return redirect(url_for("views.home"))
 
-        # If it's a request from the login page
-        if request.method == "POST":
-            email = request.form.get("email")
-            password = request.form.get("password")
-
-        # If it's a request for login after loging up
-        elif session.get("request_login"):
-            email = session.get("email")
-            password = session.get("password")
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -38,14 +33,15 @@ def login():
 @auth.route("/logout")
 @login_required
 def logout():
-    if session.get("request_login"):
-        session["request_login"] = False
     logout_user()
     return redirect(url_for("auth.login"))
 
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for("views.home"))
+
     if request.method == "POST":
         email = request.form.get("email")
         full_name = request.form.get("full_name")
@@ -73,12 +69,9 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             flash("Successfully signed up", category="success")
+            login_user(new_user, remember=True)
 
-            session["request_login"] = True
-            session["email"] = email
-            session["password"] = password1
-
-            return redirect(url_for("auth.login"))
+            return redirect(url_for("views.home"))
 
         return redirect(url_for("auth.signup"))
 
