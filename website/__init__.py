@@ -1,17 +1,20 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from os import path
 from flask_login import LoginManager
+from dotenv import load_dotenv
+from os import path, getenv
 
+load_dotenv(override=True)
+DB_URI = getenv("DB_URI")
+SECRET_KEY = getenv("SECRET_KEY")
 db = SQLAlchemy()
-DB_NAME = "database.db"
 
 
 def create_app():
     # Initialize app
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "$rbn"
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    app.config["SECRET_KEY"] = SECRET_KEY
+    app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI
     db.init_app(app)
 
     # Register external routes as blueprints
